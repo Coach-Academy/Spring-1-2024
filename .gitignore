@@ -132,3 +132,9 @@ venv.bak/
 
 # vscode
 .vscode/
+
+cmake-build-debug/
+
+.idea/
+
+Level 1\CPU - Standard - L1 - C103\Practice G2\Week 01\CMakeLists
