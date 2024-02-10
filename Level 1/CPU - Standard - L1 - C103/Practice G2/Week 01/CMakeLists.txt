@@ -3,5 +3,5 @@ project(Week_01)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Week_01 ProblemA.cpp
-        ProblemA.cpp)
+add_executable(Week_01
+        ProblemB.cpp)
