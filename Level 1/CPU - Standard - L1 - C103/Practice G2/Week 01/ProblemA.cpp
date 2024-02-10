@@ -1,10 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-
-  int n , a , b;
-  cin >> n >> a >> b;
-  int ans = n - a + b;
-  cout << ans ;
+    int n , w;
+    cin >> n >> w;
+    cout << n / w;
     return 0;
 }
