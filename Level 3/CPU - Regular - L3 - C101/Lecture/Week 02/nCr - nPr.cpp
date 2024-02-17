@@ -35,7 +35,7 @@ void pre(int N) {
   fact.assign(N + 1, 1);
   inv.assign(N + 1, 1);
   for (int i = 2; i <= N; ++i) {
-    fact[i] = mul(fact[i], i);
+    fact[i] = mul(fact[i-1], i);
     inv[i] = mod_inv(fact[i]);
   }
 }
