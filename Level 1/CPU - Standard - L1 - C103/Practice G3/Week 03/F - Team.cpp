@@ -3,12 +3,15 @@
 using namespace std;
 
 int main() {
-    int a, b;
-    cin >> a >> b;
-    int ans = 0;
-    do {
-        a *= 3, b *= 2;
-        ans++;
-    } while (a <= b);
-    cout << ans << endl;
+    int numOfProblems = 0;
+
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        int person1, person2, person3;
+        cin >> person1 >> person2 >> person3;
+        if (person1 + person2 + person3 >= 2)
+            numOfProblems++;
+    }
+    cout << numOfProblems << endl;
 }
