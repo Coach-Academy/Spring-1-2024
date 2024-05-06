@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+int main () {
+    int n, k;
+    ll sum = 0;
+    cin >> n >> k;
+    vector<int> arr(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> arr[i];
+        sum += arr[i];
+    }
+    set<pair<ll, pair<int, int>>> sums; // sum, {st, end}
+    sums.insert({sum, {0, n - 1}});
+    while (k--) { // k iterations
+        auto top = --sums.end(); // O(1)
+        sum = top->first;
+        cout << sum << " ";
+        int st = top->second.first;
+        int en = top->second.second;
+        // st + 1, en
+        sums.insert({sum - arr[st] ,{st + 1, en}}); // O(log n)
+        // st, en - 1
+        sums.insert({sum - arr[en], {st, en - 1}});
+        sums.erase(top); // O(log n)
+    }
+}
