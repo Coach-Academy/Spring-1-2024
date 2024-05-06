@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main () {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        int ans = n + 1;
+        unordered_map<int,int> last_pos;
+        for (int i = 0; i < n; ++i) {
+            int val;
+            cin >> val;
+            if (last_pos.find(val) != last_pos.end()) {
+                ans = min(ans, i - last_pos[val] + 1);
+            }
+            last_pos[val] = i;
+        }
+        if (ans == n + 1)
+            ans = -1;
+        cout << ans << "\n";
+    }
+}
