@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+vector<int> factorize(int n, int k) { // O(sqrt(n))
+    vector<int> factors;
+    for (int i = 2; i * i <= n; ++i) {
+        while (n % i == 0 && k > 1) {
+            n /= i;
+            k--;
+            factors.push_back(i);
+        }
+    }
+    if (n != 1)
+        factors.push_back(n);
+    return factors;
+}
+
+int main() {
+    int n, k;
+    cin >> n >> k;
+    auto factors = factorize(n, k);
+    if (k > factors.size()) {
+        cout << -1 << "\n";
+    }
+    else {
+        for (int f: factors)
+            cout << f << " ";
+    }
+    return 0;
+}

@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+const int N = 3e3 + 1;
+int primeDiv[N + 1];
+
+void sieve() { // O(N log log N)
+    for (int i = 2; i <= N; ++i) {
+        if (!primeDiv[i]) {
+            for (int j = i; j <= N; j += i) {
+                primeDiv[j]++;
+            }
+        }
+    }
+}
+
+int main() {
+    sieve();
+    int n, cnt = 0;
+    cin >> n;
+    for (int i = 1; i <= n; ++i) {
+        if (primeDiv[i] == 2)
+            ++cnt;
+    }
+    cout << cnt;
+    return 0;
+}

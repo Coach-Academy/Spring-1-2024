@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const int mod = 1e9 + 7;
+
+unordered_map<int,int> cnt;
+void factorize(int n) {
+    for (int i = 2; i * i <= n; ++i) {
+        while (n % i == 0) {
+            n /= i;
+            cnt[i]++;
+        }
+    }
+    if (n != 1)
+        cnt[n]++;
+}
+
+int main() {
+    int n;
+    cin >> n;
+    for (int i = 1; i <= n; ++i) {
+        factorize(i);
+    }
+    int divCnt = 1;
+    for (auto f : cnt) {
+        divCnt = 1ll * divCnt * (f.second + 1) % mod;
+    }
+    cout << divCnt;
+    return 0;
+}
