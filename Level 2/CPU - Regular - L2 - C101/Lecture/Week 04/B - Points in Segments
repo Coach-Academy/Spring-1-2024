@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+#define FIO ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+using namespace std;
+typedef long long ll;
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+    unordered_set<int> seen;
+    for (int i = 0; i < n; ++i) {
+        int l, r;
+        cin >> l >> r;
+        for (int j = l; j <= r; ++j) {
+            seen.insert(j);
+        }
+    }
+    cout << m - seen.size() << "\n";
+    for (int i = 1; i <= m; ++i) {
+        if (seen.find(i) == seen.end())
+            cout << i << " ";
+    }
+    cout << "\n";
+}

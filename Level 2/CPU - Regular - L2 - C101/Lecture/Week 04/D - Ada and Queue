@@ -1,0 +1,62 @@
+#include <bits/stdc++.h>
+#define FIO ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+using namespace std;
+typedef long long ll;
+
+int main() {
+    deque<int> dq;
+    int q;
+    cin >> q;
+    bool reverse = false;
+    while (q--) {
+        string op;
+        cin >> op;
+        if (op == "back") {
+            if (dq.empty()) {
+                cout << "No job for Ada?\n";
+                continue;
+            }
+            if (!reverse) {
+                cout << dq.back() << "\n";
+                dq.pop_back();
+            }
+            else {
+                cout << dq.front() << "\n";
+                dq.pop_front();
+            }
+        }
+        else if (op == "front") {
+            if (dq.empty()) {
+                cout << "No job for Ada?\n";
+                continue;
+            }
+            if (!reverse) {
+                cout << dq.front() << "\n";
+                dq.pop_front();
+            }
+            else {
+                cout << dq.back() << "\n";
+                dq.pop_back();
+            }
+        }
+        else if (op == "reverse") {
+            reverse = !reverse;
+        }
+        else if (op == "push_back") {
+            int val;
+            cin >> val;
+            if (!reverse)
+                dq.push_back(val);
+            else
+                dq.push_front(val);
+        }
+        else {
+            int val;
+            cin >> val;
+            if (!reverse)
+                dq.push_front(val);
+            else
+                dq.push_back(val);
+        }
+    }
+}

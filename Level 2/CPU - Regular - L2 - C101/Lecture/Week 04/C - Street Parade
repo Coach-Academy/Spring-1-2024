@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+#define FIO ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+using namespace std;
+typedef long long ll;
+
+int main() {
+    int n;
+    while (cin >> n, n) {
+        stack<int> st;
+        int target = 1;
+        for (int i = 0; i < n; ++i) {
+            int x;
+            cin >> x;
+            if (x == target) target++;
+            else {
+                while (!st.empty() && st.top() == target) st.pop(), target++;
+                st.push(x);
+            }
+        }
+        bool can = true;
+        while (!st.empty()) {
+            if (st.top() != target) {
+                can = false;
+                break;
+            }
+            st.pop();
+            target++;
+        }
+        cout << (can ? "yes\n" : "no\n");
+    }
+}
