@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+#define FIO ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+using namespace std;
+typedef long long ll;
+
+int main() {
+    int n, k;
+    int val;
+    cin >> n >> k;
+    set<int> taken;
+    vector<int> indices;
+    for (int i = 1; i <= n; ++i) {
+        cin >> val;
+        if (taken.find(val) == taken.end()) {
+            indices.push_back(i);
+            taken.insert(val);
+        }
+    }
+    if (taken.size() >= k) {
+        cout << "YES\n";
+        for (int i = 0; i < k; ++i) {
+            cout << indices[i] << " ";
+        }
+        cout << "\n";
+    }
+    else {
+        cout << "NO\n";
+    }
+}

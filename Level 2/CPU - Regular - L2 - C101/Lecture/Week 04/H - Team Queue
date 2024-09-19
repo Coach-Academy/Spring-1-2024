@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+#define FIO ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+using namespace std;
+typedef long long ll;
+
+int main() {
+    int teams, tc = 1;
+    while (cin >> teams, teams) {
+        vector<queue<int>> v(teams);
+        unordered_map<int,int> teamIndex, queueIndex;
+
+        for (int i = 0; i < teams; ++i) {
+            int teamCnt, elem;
+            cin >> teamCnt;
+            for (int j = 0; j < teamCnt; ++j) {
+                cin >> elem;
+                teamIndex[elem] = i;
+            }
+        }
+
+        cout << "Scenario #" << tc++ << "\n";
+        string op;
+        int curQIndex = 0, dequeIndex = 0;
+        while (cin >> op, op != "STOP") {
+            if (op == "ENQUEUE") {
+                int elem;
+                cin >> elem;
+                int team = teamIndex[elem];
+                if (queueIndex.find(team) == queueIndex.end()) {
+                    queueIndex[team] = curQIndex++;
+                }
+                if (queueIndex[team] >= v.size()) v.push_back(queue<int>());
+                v[queueIndex[team]].push(elem);
+            }
+            else {
+                int elem = v[dequeIndex].front();
+                int team = teamIndex[elem];
+                cout << elem << "\n";
+                v[dequeIndex].pop();
+                if (v[dequeIndex].empty()) {
+                    dequeIndex++;
+                    queueIndex.erase(team);
+                }
+            }
+        }
+        cout << "\n";
+    }
+}
